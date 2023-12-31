@@ -12,7 +12,7 @@ const Dashboard = () => {
     <div className="w-[1600px] mx-auto border border-red-600">
       <div className="flex flex-col lg:flex-row md:flex-row">
         {/* dashboard side bar */}
-        <div className="lg:w-64 md:w-64 w-full lg:min-h-screen md:min-h-screen lg:bg-[#756AB6] md:lg:bg-[#004e89]">
+        <div className="lg:w-64 md:w-64 w-full lg:min-h-screen md:min-h-screen lg:bg-[#756AB6] md:lg:bg-[#756AB6]">
         <h1 className="flex uppercase font-bold text-[23px] p-2 mt-[10px] bg-[#FFCACC] text-[#0802A3] shadow-md shadow-black"><FaMoneyBillTrendUp className="mt-[5px]"></FaMoneyBillTrendUp>Expense Tracker</h1>
           <div className=" mt-[50px] mb-[80px]">
             <img
