@@ -3,7 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5001;
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 // //middleware
 // app.use(
@@ -46,11 +46,30 @@ async function run() {
       .collection("expense");
     const fundCollection = client.db("expenseTracker").collection("fund");
 
+    //get available fund
+    app.get("/fund", async (req, res) => {
+      const result = await fundCollection.find().toArray();
+      res.send(result);
+    });
     //using post method to store available fund
     app.post("/fund", async (req, res) => {
       const availableFund = req.body;
       console.log(availableFund);
       const result = await fundCollection.insertOne(availableFund);
+      res.send(result);
+    });
+
+    //patch method for update fund
+    app.patch("/updateFund/:id", async (req, res) => {
+      const item = req.body;
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const updatedDoc = {
+        $set: {
+          availableFund: item.updateAvailabeFund,
+        },
+      };
+      const result = await fundCollection.updateOne(filter, updatedDoc);
       res.send(result);
     });
 
