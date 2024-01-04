@@ -5,9 +5,9 @@ import Swal from "sweetalert2";
 
 const AddExpense = () => {
   const axiosPublic = useAxiosPublic();
-  //for date picker
-  const [selectedDate, setSelectedDate] = useState();
-  const formattedDate = moment(selectedDate).format("lll");
+ 
+  const currentDate = new Date();
+  const formattedDate = moment(currentDate).format('MMMM Do h:mm a');
 
 
   const handleAddExpense = (e) => {
@@ -40,12 +40,9 @@ const AddExpense = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-
       }
     });
   };
-
-
 
   return (
     <div className="shadow-lg shadow-[#D0BFFF] p-24 lg:w-[1100px] mx-auto mt-12 mb-12 bg-white">
@@ -87,11 +84,16 @@ const AddExpense = () => {
           </select>
         </div>{" "}
         <div className="form-control mt-6 ">
+          <label className="label">
+            <span className="label-text text-sm">
+            Incurred on
+            </span>
+          </label>
           <input
             type="text"
             name="date"
-            placeholder="Incurred on"
-            className="border-b-2 border-gray-500  w-full placeholder-black"
+            value={formattedDate}
+            className="border-b-2 border-gray-500 font-bold  w-full placeholder-black"
           />
         </div>
         <div className="form-control mt-6 ">
