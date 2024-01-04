@@ -6,6 +6,7 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { FaMoneyBillWave } from "react-icons/fa6";
 
 const Dashboard = () => {
   return (
@@ -26,6 +27,12 @@ const Dashboard = () => {
           <div className="divider divider-warning w-[230px] mx-auto hidden lg:block bg-[#11009E] md:block h-[4px]"></div>
 
           <ul className="lg:menu md:menu p-4 flex flex-row md:flex-col lg:flex-col">
+            <li className="font-bold  uppercase  text-white mr-6 mb-2">
+              <NavLink to="/dashboard/addFund">
+                <FaMoneyBillWave className="text-[#FFCACC]"></FaMoneyBillWave>
+                Add Fund
+              </NavLink>
+            </li>
             <li className="font-bold  uppercase  text-white mr-6">
               <NavLink to="/dashboard/addExpense">
                 <FaAddressBook className="text-[#FFCACC]"></FaAddressBook>

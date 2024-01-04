@@ -7,7 +7,8 @@ const AddExpense = () => {
   const axiosPublic = useAxiosPublic();
   //for date picker
   const [selectedDate, setSelectedDate] = useState();
-  const formattedDate = moment(selectedDate).format("DD/MM/YYYY");
+  const formattedDate = moment(selectedDate).format("lll");
+
 
   const handleAddExpense = (e) => {
     e.preventDefault();
@@ -17,14 +18,14 @@ const AddExpense = () => {
     const productTitle = form.productTitle.value;
     const amount = form.amount.value;
     const category = form.category.value;
-    const  notes = form.notes.value;
+    const notes = form.notes.value;
 
     const newExpense = {
       productTitle,
       amount,
       category,
       formattedDate,
-      notes
+      notes,
     };
     console.log(newExpense);
 
@@ -39,9 +40,12 @@ const AddExpense = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+
       }
     });
   };
+
+
 
   return (
     <div className="shadow-lg shadow-[#D0BFFF] p-24 lg:w-[1100px] mx-auto mt-12 mb-12 bg-white">
@@ -84,20 +88,11 @@ const AddExpense = () => {
         </div>{" "}
         <div className="form-control mt-6 ">
           <input
-            type="date"
+            type="text"
             name="date"
-            selected={formattedDate}
-            onChange={(date) => setSelectedDate(date)}
             placeholder="Incurred on"
             className="border-b-2 border-gray-500  w-full placeholder-black"
           />
-          {/* <DatePicker
-            className="border border-black"
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            // dateFormat="dd/MM/yyyy"
-            minDate={new Date()}
-          ></DatePicker>{" "} */}
         </div>
         <div className="form-control mt-6 ">
           <input

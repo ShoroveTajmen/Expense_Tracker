@@ -6,6 +6,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddExpense from "../Pages/Dashboard/AddExpense";
 import ExpenseReport from "../Pages/Dashboard/ExpenseReport";
 import ExpenseChart from "../Pages/Dashboard/ExpenseChart";
+import FundingAdd from "../Pages/Dashboard/FundingAdd";
 
 const myCreateRoutes = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const myCreateRoutes = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      {
+        path: "addFund",
+        element: <FundingAdd></FundingAdd>,
+      },
       {
         path: "addExpense",
         element: <AddExpense></AddExpense>,
