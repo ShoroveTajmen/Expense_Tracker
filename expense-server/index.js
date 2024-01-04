@@ -36,10 +36,23 @@ const client = new MongoClient(uri, {
   },
 });
 
+let availableFund = 100;
+
 async function run() {
   try {
     //create a database and database collection
-    const expensetCollection = client.db("expenseTracker").collection("expense");
+    const expensetCollection = client
+      .db("expenseTracker")
+      .collection("expense");
+    const fundCollection = client.db("expenseTracker").collection("fund");
+
+    //using post method to store available fund
+    app.post("/fund", async (req, res) => {
+      const availableFund = req.body;
+      console.log(availableFund);
+      const result = await fundCollection.insertOne(availableFund);
+      res.send(result);
+    });
 
     //using post method to store contact info in the database
     app.post("/expense", async (req, res) => {
