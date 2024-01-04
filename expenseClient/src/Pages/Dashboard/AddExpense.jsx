@@ -1,20 +1,28 @@
 import moment from "moment";
-import { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAvailableFund from "../../Hooks/useAvailableFund";
 
 const AddExpense = () => {
   const axiosPublic = useAxiosPublic();
- 
-  const currentDate = new Date();
-  const formattedDate = moment(currentDate).format('MMMM Do h:mm a');
+  const [fund, refetch, isLoading] = useAvailableFund();
 
+  const availableFundValue = fund[0]?.availableFund;
+  const id = fund[0]?._id;
+  console.log(availableFundValue, id);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  //get current date
+  const currentDate = new Date();
+  const formattedDate = moment(currentDate).format("MMMM Do h:mm a");
 
   const handleAddExpense = (e) => {
     e.preventDefault();
 
     const form = e.target;
-
     const productTitle = form.productTitle.value;
     const amount = form.amount.value;
     const category = form.category.value;
@@ -42,10 +50,28 @@ const AddExpense = () => {
         });
       }
     });
+
+    const updateAvailabeFund = availableFundValue - amount;
+    const newFund = {
+      updateAvailabeFund
+    }
+
+
+    axiosPublic.patch(`/updateFund/${id}`, newFund).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+      }
+    });
+
+
   };
 
   return (
     <div className="shadow-lg shadow-[#D0BFFF] p-24 lg:w-[1100px] mx-auto mt-12 mb-12 bg-white">
+      <h2 className="text-lg mb-8 lg:mb-0 font-bold uppercase text-pink-600">
+        Available Fund: {availableFundValue}
+      </h2>
       <h2 className="text-4xl mb-8 lg:mb-0 font-bold uppercase text-[#756AB6]">
         Expense Record
       </h2>
@@ -85,14 +111,12 @@ const AddExpense = () => {
         </div>{" "}
         <div className="form-control mt-6 ">
           <label className="label">
-            <span className="label-text text-sm">
-            Incurred on
-            </span>
+            <span className="label-text text-sm">Incurred on</span>
           </label>
           <input
             type="text"
             name="date"
-            value={formattedDate}
+            defaultValue={formattedDate}
             className="border-b-2 border-gray-500 font-bold  w-full placeholder-black"
           />
         </div>
