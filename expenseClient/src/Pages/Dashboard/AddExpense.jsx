@@ -18,6 +18,8 @@ const AddExpense = () => {
   //get current date
   const currentDate = new Date();
   const formattedDate = moment(currentDate).format("MMMM Do h:mm a");
+  const anotherFormattedDate = moment(currentDate).format('L');
+  
 
   const handleAddExpense = (e) => {
     e.preventDefault();
@@ -32,7 +34,7 @@ const AddExpense = () => {
       productTitle,
       amount,
       category,
-      formattedDate,
+      anotherFormattedDate,
       notes,
     };
     console.log(newExpense);
