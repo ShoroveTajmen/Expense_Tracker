@@ -51,6 +51,32 @@ async function run() {
       const result = await fundCollection.find().toArray();
       res.send(result);
     });
+     //get all expense report
+    app.get("/expenseReport", async (req, res) => {
+      const result = await expensetCollection.find().toArray();
+      res.send(result);
+    });
+
+    //get data by date
+    app.get("/filterExpense", async(req, res) => {
+      const fromDate = req.query.fromDate;
+      const toDate = req.query.toDate;
+      console.log(fromDate, toDate);
+
+      //create a filter object based on the date range
+      const dateFilter = {};
+      if(fromDate && toDate){
+        dateFilter.anotherFormattedDate = {
+          $gte: fromDate,
+          $lte: toDate,
+        }
+      }
+
+      const result = await expensetCollection.find(dateFilter).toArray();
+      res.send(result);
+
+    })
+
     //using post method to store available fund
     app.post("/fund", async (req, res) => {
       const availableFund = req.body;
