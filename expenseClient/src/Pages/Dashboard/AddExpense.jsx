@@ -103,9 +103,9 @@ const AddExpense = () => {
             <option disabled selected>
               Category
             </option>
-            <option>Eat Outs</option>
+            <option>EatOuts</option>
             <option>Gardening</option>
-            <option>Health Care</option>
+            <option>HealthCare</option>
             <option>Groceries</option>
             <option>Utilities</option>
             <option>Commute</option>
