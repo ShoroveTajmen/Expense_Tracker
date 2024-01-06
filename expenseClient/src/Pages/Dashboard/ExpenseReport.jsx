@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAllExpense from "../../Hooks/useAllExpense";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import ReportByDate from "./ReportByDate";
 
 const ExpenseReport = () => {
   const [expenses, refetch, isLoading] = useAllExpense();
@@ -14,7 +15,7 @@ const ExpenseReport = () => {
     return acc + parseFloat(expense.amount);
   }, 0);
 
-  // using tanstack query to get all data
+  // using tanstack query to get all data by filtering date
   const axiosPublic = useAxiosPublic();
   const {
     data: filterData = [],
@@ -49,7 +50,7 @@ const ExpenseReport = () => {
       <h1 className="text-lg mb-8 lg:mb-0 font-bold uppercase text-pink-600">
         Total Expense : {totalExpense}
       </h1>
-      <div className="flex">
+      <div className="flex mb-[100px]">
         <h1 className="mt-[20px] text-[20px] font-bold text-[#756AB6]">
           Expenditure Report :
         </h1>
@@ -84,6 +85,7 @@ const ExpenseReport = () => {
         </div>
 
       </div>
+      <ReportByDate filterData={filterData} fromDate={fromDate} toDate={toDate}></ReportByDate>
     </div>
   );
 };
