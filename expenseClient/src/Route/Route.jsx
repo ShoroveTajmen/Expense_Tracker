@@ -7,6 +7,7 @@ import AddExpense from "../Pages/Dashboard/AddExpense";
 import ExpenseReport from "../Pages/Dashboard/ExpenseReport";
 import ExpenseChart from "../Pages/Dashboard/ExpenseChart";
 import FundingAdd from "../Pages/Dashboard/FundingAdd";
+import EditExpense from "../Pages/Dashboard/EditExpense";
 
 const myCreateRoutes = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const myCreateRoutes = createBrowserRouter([
         path: "statistics",
         element: <ExpenseChart></ExpenseChart>,
       },
+      {
+        path: "expenseReport/editExpense/:id",
+        element: <EditExpense></EditExpense>,
+        loader: ({params}) => fetch(`http://localhost:5001/item/${params.id}`)
+      }
     ],
   },
 ]);

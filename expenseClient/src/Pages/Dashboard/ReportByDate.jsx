@@ -1,28 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
-const ReportByDate = ({fromDate, toDate }) => {
-  console.log( fromDate, toDate);
+const ReportByDate = ({ fromDate, toDate }) => {
+  console.log(fromDate, toDate);
 
-    // using tanstack query to get all data by filtering date
-    const axiosPublic = useAxiosPublic();
-    const {
-      data: filterData = [], refetch, isLoading
-    } = useQuery({
-      queryKey: ["filtereData", fromDate, toDate],
-      queryFn: async () => {
-        const res = await axiosPublic.get(
-          `/filterExpense?fromDate=${fromDate}&toDate=${toDate}`
-        );
-        //refetch();
-        return res.data;
-      },
-    });
-    console.log(filterData);
-    if (isLoading) {
-      return <p>Loading....</p>;
-    }
+  // using tanstack query to get all data by filtering date
+  const axiosPublic = useAxiosPublic();
+  const {
+    data: filterData = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["filtereData", fromDate, toDate],
+    queryFn: async () => {
+      const res = await axiosPublic.get(
+        `/filterExpense?fromDate=${fromDate}&toDate=${toDate}`
+      );
+      //refetch();
+      return res.data;
+    },
+  });
+  console.log(filterData);
+  if (isLoading) {
+    return <p>Loading....</p>;
+  }
 
   // Calculate total expense for entire date range
   const totalExpense = filterData.reduce((total, entry) => {
@@ -100,19 +103,33 @@ const ReportByDate = ({fromDate, toDate }) => {
         <td>{entry.productTitle}</td>
         <td>{entry.amount}</td>
         <td>
-          <button  onClick={() => handleEdit(entry)} className="mr-[4px] btn-xsm bg-[#DCBFFF] rounded-lg p-[6px] font-bold">
+          {/* <button
+            onClick={() => handleEdit(entry)}
+            className="mr-[4px] btn-xsm bg-[#DCBFFF] rounded-lg p-[6px] font-bold"
+          >
             Edit{" "}
+          </button> */}
+          <Link to={`editExpense/${entry._id}`}>
+            {" "}
+            <button className="mr-[4px] btn-xsm bg-[#DCBFFF] rounded-lg p-[6px] font-bold">
+              Edit
+            </button>
+          </Link>
+          <button
+            className="btn-xsm bg-[#FF8080] font-bold rounded-lg p-[6px]"
+            onClick={() => handleDelete(entry._id)}
+          >
+            Delete
           </button>
-          <button className="btn-xsm bg-[#FF8080] font-bold rounded-lg p-[6px]" onClick={() => handleDelete(entry._id)}>Delete</button>
         </td>
       </tr>
     ));
   };
 
   // Placeholder functions for edit and update actions
-  const handleEdit = (entry_id) => {
-    console.log("Edit entry:", entry_id);
-  };
+  // const handleEdit = (entry_id) => {
+  //   console.log("Edit entry:", entry_id);
+  // };
 
   const handleDelete = (itemId) => {
     console.log("Delete entry:", itemId);
@@ -134,7 +151,7 @@ const ReportByDate = ({fromDate, toDate }) => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: 'Item Deleted Successfully',
+            title: "Item Deleted Successfully",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -149,7 +166,6 @@ const ReportByDate = ({fromDate, toDate }) => {
         <h2 className="font-bold text-lg">Total Expense</h2>
         <h2 className="font-bold text-lg text-red-600">{totalExpense}TK</h2>
       </div>
-     
     </div>
   );
 };
