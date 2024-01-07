@@ -27,7 +27,7 @@ const Banner = () => {
             <h1 className="font-bold text-[35px] decoration-double ml-[40px]">
             Your Ultimate Expense Tracker <br /> for Financial Wellness
             </h1>
-            <Link to={"/login"}>
+            <Link to={"/dashboard"}>
               {" "}
               <button className="btn bg-[#F11A7B] text-[20px] text-white font-bold border-none rounded-none ml-[40px] mt-[10px]">
                 Let's Explore{" "}
