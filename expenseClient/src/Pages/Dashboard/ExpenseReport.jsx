@@ -82,7 +82,7 @@ const ExpenseReport = () => {
         </div>
 
       </div>
-      <ReportByDate filterData={filterData} fromDate={fromDate} toDate={toDate}></ReportByDate>
+      <ReportByDate  fromDate={fromDate} toDate={toDate}></ReportByDate>
     </div>
   );
 };
