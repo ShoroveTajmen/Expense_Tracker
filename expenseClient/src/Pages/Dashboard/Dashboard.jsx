@@ -10,7 +10,7 @@ import { FaMoneyBillWave } from "react-icons/fa6";
 
 const Dashboard = () => {
   return (
-    <div className="w-[1600px] mx-auto border border-red-600">
+    <div className="w-[1600px] mx-auto">
       <div className="flex flex-col lg:flex-row md:flex-row">
         {/* dashboard side bar */}
         <div className="lg:w-64 md:w-64 w-full lg:min-h-screen md:min-h-screen lg:bg-[#756AB6] md:lg:bg-[#756AB6]">

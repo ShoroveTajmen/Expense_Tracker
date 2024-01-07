@@ -21,7 +21,7 @@ const Banner = () => {
               src="https://i.ibb.co/bWs4f0n/111.png"
               alt=""
             />
-            <h1 className="uppercase font-bold text-[35px] ml-[40px]">
+            <h1 className="uppercase font-bold text-[35px] ml-[40px] text-[#FF4C29]">
             SpendSmart
             </h1>
             <h1 className="font-bold text-[35px] decoration-double ml-[40px]">

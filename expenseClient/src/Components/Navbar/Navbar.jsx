@@ -3,14 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     return (
         <div>
-        <nav className="flex flex-col md:flex-col lg:flex-row md:justify-between md:items-center py-3 md:py-2  md:px-5 md:ml-0 bg-[#FFF4F4]">
+        <nav className="flex flex-col md:flex-col lg:flex-row md:justify-between md:items-center py-3 md:py-2  md:px-5 md:ml-0 ">
           <div className="flex">
-            {/* <h1 className="btn btn-ghost text-[40px] text-[#E86A33] ml-[70px] md:ml-[0px] lg:ml-[0px] font-bold mb-[10px] md:mb-[0px] lg:mb-[0px]">
-              OrganizePilot
-            </h1> */}
+
             <img
-            className="w-[100px] h-[100px]"
-             src="https://i.ibb.co/T2b4xv2/alvioni-fashion-brand-art-design-logo-removebg-preview.png" alt="" />
+            className="w-[200px] h-[120px]"
+             src="https://i.ibb.co/JRDXMnz/Colorful-Abstract-B-Free-Logo-1-removebg-preview.png" alt="" />
           </div>
           {/* navbar link page route */}
           <div className="lg:w-1/3 lg:ml-[300px] ml-[70px]">
@@ -22,7 +20,7 @@ const Navbar = () => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "text-[#17594A] underline"
+                      ? "text-[#F11A7B] underline"
                       : ""
                   }
                 >
@@ -36,7 +34,7 @@ const Navbar = () => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "text-[#17594A] underline"
+                      ? "text-[#F11A7B] underline"
                       : ""
                   }
                 >
@@ -50,7 +48,7 @@ const Navbar = () => {
                     isPending
                       ? "pending"
                       : isActive
-                      ? "text-[#17594A] underline"
+                      ? "text-[#F11A7B] underline"
                       : ""
                   }
                 >
