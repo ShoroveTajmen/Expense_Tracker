@@ -76,11 +76,27 @@ async function run() {
       res.send(result);
     });
 
+    //get specific item
+    app.get("/item/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await expensetCollection.findOne(query);
+      res.send(result);
+    });
+
     //using post method to store available fund
     app.post("/fund", async (req, res) => {
       const availableFund = req.body;
       console.log(availableFund);
       const result = await fundCollection.insertOne(availableFund);
+      res.send(result);
+    });
+
+    //using post method to store contact info in the database
+    app.post("/expense", async (req, res) => {
+      const allExpense = req.body;
+      console.log(allExpense);
+      const result = await expensetCollection.insertOne(allExpense);
       res.send(result);
     });
 
@@ -98,11 +114,21 @@ async function run() {
       res.send(result);
     });
 
-    //using post method to store contact info in the database
-    app.post("/expense", async (req, res) => {
-      const allExpense = req.body;
-      console.log(allExpense);
-      const result = await expensetCollection.insertOne(allExpense);
+    //patch method for specific expense item update
+    app.patch("/editExpense/:id", async (req, res) => {
+      const item = req.body;
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const updatedDoc = {
+        $set: {
+          productTitle: item.productTitle,
+          amount: item.amount,
+          category: item.category,
+          notes: item.description,
+          anotherFormattedDate: item. anotherFormattedDate
+        },
+      };
+      const result = await expensetCollection.updateOne(filter, updatedDoc);
       res.send(result);
     });
 
