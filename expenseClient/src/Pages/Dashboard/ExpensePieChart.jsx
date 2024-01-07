@@ -1,14 +1,18 @@
 import {
   PieChart,
   Pie,
-  Sector,
   Cell,
-  ResponsiveContainer,
   Legend,
-  Tooltip,
 } from "recharts";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = [
+  "#0088FE",
+  "#E15FED",
+  "#FFBB28",
+  "#FF8042",
+  "#5D3587",
+  "#FF004D",
+];
 
 const ExpensePieChart = ({ categoryData }) => {
   console.log(categoryData);
@@ -59,14 +63,14 @@ const ExpensePieChart = ({ categoryData }) => {
   return (
     <div className="flex justify-center">
       <div>
-        <PieChart width={300} height={500} className="w-[400px] h-[400px]">
+        <PieChart width={700} height={600} className="w-[400px] h-[400px]">
           <Pie
             data={pieData}
             cx="50%"
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={150}
+            outerRadius={250}
             fill="#8884d8"
             dataKey="value"
           >
@@ -75,9 +79,10 @@ const ExpensePieChart = ({ categoryData }) => {
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
               />
+              
             ))}
+
           </Pie>
-          {/* <Tooltip formatter={(value) => `${value}%`} /> */}
           <Legend></Legend>
         </PieChart>
       </div>
