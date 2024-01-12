@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../Layout/MainLayout";
-import Home from "../Pages/Home/Home";
-import Errorpage from "../Pages/Errorpage/Errorpage";
-import Dashboard from "../Pages/Dashboard/Dashboard";
-import AddExpense from "../Pages/Dashboard/AddExpense";
-import ExpenseReport from "../Pages/Dashboard/ExpenseReport";
-import ExpenseChart from "../Pages/Dashboard/ExpenseChart";
-import FundingAdd from "../Pages/Dashboard/FundingAdd";
-import EditExpense from "../Pages/Dashboard/EditExpense";
 import AboutUs from "../Components/AboutUs/AboutUs";
+import MainLayout from "../Layout/MainLayout";
+import AddExpense from "../Pages/Dashboard/AddExpense";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import EditExpense from "../Pages/Dashboard/EditExpense";
+import ExpenseChart from "../Pages/Dashboard/ExpenseChart";
 import ExpensePrediction from "../Pages/Dashboard/ExpensePrediction";
+import ExpenseReport from "../Pages/Dashboard/ExpenseReport";
+import FundingAdd from "../Pages/Dashboard/FundingAdd";
+import Errorpage from "../Pages/Errorpage/Errorpage";
+import Home from "../Pages/Home/Home";
 
 const myCreateRoutes = createBrowserRouter([
   {
@@ -22,9 +22,9 @@ const myCreateRoutes = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:"about",
-        element: <AboutUs></AboutUs>
-      }
+        path: "about",
+        element: <AboutUs></AboutUs>,
+      },
     ],
   },
   //Dashboard portion
@@ -51,12 +51,13 @@ const myCreateRoutes = createBrowserRouter([
       {
         path: "expenseReport/editExpense/:id",
         element: <EditExpense></EditExpense>,
-        loader: ({params}) => fetch(`http://localhost:5001/item/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://expense-server-three.vercel.app/item/${params.id}`),
       },
       {
         path: "prediction",
-        element: <ExpensePrediction></ExpensePrediction>
-      }
+        element: <ExpensePrediction></ExpensePrediction>,
+      },
     ],
   },
 ]);
