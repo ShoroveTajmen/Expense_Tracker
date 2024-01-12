@@ -1,9 +1,4 @@
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Legend,
-} from "recharts";
+import { Cell, Legend, Pie, PieChart } from "recharts";
 
 const COLORS = [
   "#0088FE",
@@ -63,7 +58,11 @@ const ExpensePieChart = ({ categoryData }) => {
   return (
     <div className="flex justify-center">
       <div>
-        <PieChart width={700} height={600} className="w-[400px] h-[400px]">
+        <PieChart
+          width={700}
+          height={600}
+          className="w-[400px] h-[400px] ml-[100px]"
+        >
           <Pie
             data={pieData}
             cx="50%"
@@ -79,9 +78,7 @@ const ExpensePieChart = ({ categoryData }) => {
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
               />
-              
             ))}
-
           </Pie>
           <Legend></Legend>
         </PieChart>

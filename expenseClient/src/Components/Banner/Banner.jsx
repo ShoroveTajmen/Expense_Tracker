@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { FaArrowRightLong } from "react-icons/fa6";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useEffect } from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   useEffect(() => {
@@ -10,7 +10,7 @@ const Banner = () => {
   }, []);
   return (
     <div>
-      <div className="h-[850px] md:h-[850px] lg:h-[600px] w-full mt-[50px] bg-gradient-to-r from-[#FFE5E5] via-[#DFCCFB] to-[#BEADFA] ...">
+      <div className="h-[850px] md:h-[950px] lg:h-[600px] w-full mt-[50px] bg-gradient-to-r from-[#FFE5E5] via-[#DFCCFB] to-[#BEADFA] ...">
         <div
           className="flex lg:flex-row flex-col justify-evenly items-center"
           data-aos="zoom-in"
@@ -22,10 +22,10 @@ const Banner = () => {
               alt=""
             />
             <h1 className="uppercase font-bold text-[35px] ml-[40px] text-[#FF4C29]">
-            SpendSmart
+              SpendSmart
             </h1>
             <h1 className="font-bold text-[35px] decoration-double ml-[40px]">
-            Your Ultimate Expense Tracker <br /> for Financial Wellness
+              Your Ultimate Expense Tracker <br /> for Financial Wellness
             </h1>
             <Link to={"/dashboard"}>
               {" "}
@@ -36,10 +36,7 @@ const Banner = () => {
             </Link>
           </div>
           <div>
-            <img
-              src="https://i.ibb.co/NTY588h/exxx.webp"
-              alt=""
-            />
+            <img src="https://i.ibb.co/NTY588h/exxx.webp" alt="" />
           </div>
         </div>
       </div>

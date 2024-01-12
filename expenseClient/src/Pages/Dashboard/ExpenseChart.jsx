@@ -1,6 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
 import ExpensePieChart from "./ExpensePieChart";
 
 const ExpenseChart = () => {
@@ -39,13 +39,13 @@ const ExpenseChart = () => {
 
   return (
     <div>
-      <div className="flex mb-[100px]">
+      <div className="flex lg:flex-row flex-col md:flex-col mb-[100px]">
         <h1 className="mt-[20px] text-[20px] font-bold text-green-500">
           Expenditure Per Category :
         </h1>
         <div className="ml-[30px]">
           <form onSubmit={handleDateSearch}>
-            <div className="flex">
+            <div className="flex lg:flex-row flex-col md:flex-col">
               <label className="label">
                 <span className="label-text text-xl font-bold">From</span>
               </label>
@@ -67,7 +67,7 @@ const ExpenseChart = () => {
               <input
                 type="submit"
                 value="Go"
-                className="btn-sm pl-4 pr-4 shadow-sm shadow-gray-600 ml-[20px] font-bold bg-green-500 "
+                className="btn-sm pl-4 pr-4 shadow-sm shadow-gray-600 lg:ml-[20px] font-bold bg-green-500 mt-[20px]"
               />
             </div>
           </form>

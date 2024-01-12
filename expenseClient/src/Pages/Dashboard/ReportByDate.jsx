@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const ReportByDate = ({ fromDate, toDate }) => {
   console.log(fromDate, toDate);
@@ -58,10 +58,10 @@ const ReportByDate = ({ fromDate, toDate }) => {
   const renderAccordions = () => {
     return Object.keys(dataByDate).map((date) => (
       <div key={date} className="mb-4 ">
-        <div className="join join-vertical w-full border-2 border-blue-600 rounded-none">
-          <div className="collapse collapse-arrow join-item border border-base-300">
+        <div className="join join-vertical border-2 border-blue-600 rounded-none lg:w-full w-[400px] md:w-[450px]">
+          <div className="collapse collapse-arrow join-item border border-base-300 ">
             <input type="radio" name={`accordion-${date}`} />
-            <div className="collapse-title text-lg font-medium bg-[#B6FFFA]">
+            <div className="collapse-title text-lg font-medium bg-[#B6FFFA] ">
               {/* {`Total Expense of ${date} -  ${dataByDate[date].totalAmount}TK`} */}
               <div className="flex justify-between">
                 <h1>Total Expense of {date}</h1>
@@ -162,7 +162,7 @@ const ReportByDate = ({ fromDate, toDate }) => {
   return (
     <div>
       {renderAccordions()}
-      <div className="flex justify-between border-2 border-blue-600 p-4 bg-green-100">
+      <div className="flex justify-between lg:w-full w-[400px] md:w-[450px] border-2 border-blue-600 p-4 bg-green-100">
         <h2 className="font-bold text-lg">Total Expense</h2>
         <h2 className="font-bold text-lg text-red-600">{totalExpense}TK</h2>
       </div>
