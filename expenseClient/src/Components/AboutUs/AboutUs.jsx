@@ -1,10 +1,20 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 const AboutUs = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
     <div>
       <h1 className="text-center text-[40px] font-bold text-[#FF4C29] mb-[40px]">
         About Expense Tracker Website
       </h1>
-      <div className="lg:w-[1300px] lg:h-[600px] h-[1000px]  mx-auto shadow-lg shadow-[#413F42] rounded-[30px] mb-[50px] flex lg:flex-row md:flex-col flex-col justify-center items-center gap-3">
+      <div
+        className="lg:w-[1300px] lg:h-[600px] h-[1000px]  mx-auto shadow-lg shadow-[#413F42] rounded-[30px] mb-[50px] flex lg:flex-row md:flex-col flex-col justify-center items-center gap-3 "
+        data-aos="zoom-in"
+      >
         <div className="w-[400px]">
           {" "}
           <p className="font-bold">
